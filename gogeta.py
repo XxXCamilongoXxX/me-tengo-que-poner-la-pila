@@ -1,5 +1,5 @@
 papus = []
-
+cargos = ("CEO","DESARROLADOR","ANALISTA")
 
 
 def opcion_1():
@@ -10,7 +10,7 @@ def opcion_1():
         desc_salud = int(7/100 * sueldo_solido)
         desc_afp = int(12/100 * sueldo_solido)
         sueldo_liquido = sueldo_solido-desc_afp-desc_salud
-        papu = [nombre_apellido,cargo,sueldo_solido,desc_salud,desc_afp]
+        papu = [nombre_apellido,cargos[cargo-1],sueldo_solido,desc_salud,desc_afp]
         papus.append(papu)
         print("TRABAJADOR REGISTRADO CON ÉXITO!")
 
@@ -31,13 +31,13 @@ def opcion_3():
             if opc2==4:
                 with open("todos_trabajadores.txt","w", newline="\n") as archivo:
                     for t in papus:
-                        texto =  f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                        texto =  f"NOMBRE {t[0]}\nCARGO{t[1]}\nBRUTO {t[2]}\n DESC. SALUD {t[3]}\nDESC. AFP {t[4]}\nLIQUIDO {t[5]}"
                         archivo.write(texto)        
             else:
                 with open("trabajadores_por_cargo.txt","w") as archivo:
                     for t in papus:
-                        if opc2==t[1]:
-                            texto =  f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                        if cargos[opc2-1]==t[1]:
+                            texto =  f"NOMBRE {t[0]}\nCARGO{t[1]}\nBRUTO {t[2]}\n DESC. SALUD {t[3]}\nDESC. AFP {t[4]}\nLIQUIDO {t[5]}"
                             archivo.write(texto)
             print("ARCHIVO CREADO CON ÉXITO!")
 def opcion_4():
