@@ -32,13 +32,19 @@ while True:
         if len(papus)==0:
             print("No existen trabajadores, elija la opción 1")
         else:
-            opc2 = int(input("¿Qué cargo desea imprimit(1:CEO, 2:DESARROLLOR 3:ANALISTA)"))
-            if opc2 ==4:
+            opc2 = int(input("¿Qué cargo desea imprimit(1:CEO, 2:DESARROLLOR 3:ANALISTA 4:TODOS)"))
+            if opc2==4:
                 with open("todos_trabajadores.txt","w", newline="\n") as archivo:
                     for t in papus:
                         texto =  f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
-                        archivo.write(texto)
-
+                        archivo.write(texto)        
+            else:
+                with open("trabajadores_por_cargo.txt","w") as archivo:
+                    for t in papus:
+                        if opc2==t[1]:
+                            texto =  f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                            archivo.write(texto)
+            print("ARCHIVO CREADO CON ÉXITO!")
     else:
         print("Gracias por usar el programa, bye bye")
         break
